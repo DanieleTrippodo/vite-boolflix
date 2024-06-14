@@ -31,5 +31,15 @@ export default {
 <style scoped>
 button {
   font-weight: bold;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: .5rem;
+}
+
+input{
+  padding: .5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-right-style: none;
 }
 </style>
