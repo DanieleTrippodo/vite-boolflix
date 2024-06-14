@@ -1,29 +1,82 @@
-<script setup>
-import MovieSearch from './components/MovieSearch.vue'
+<script>
+import axios from './axios';
+import MovieSearch from './components/MovieSearch.vue';
+import MovieList from './components/MovieList.vue';
 
 export default {
   name: 'App',
   components: {
-    MovieSearch
+    MovieSearch,
+    MovieList
+  },
+  data() {
+    return {
+      movies: [],
+      loading: false,
+      error: null
+    };
+  },
+  methods: {
+    async fetchMovies(query) {
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await axios.get('/search/movie', {
+          params: {
+            api_key: '4ec0ba7c0ea82de7085d2c129e2c544d', // la mia API Key
+            query,
+            language: 'it-IT'
+          }
+        });
+        this.movies = response.data.results;
+      } catch (error) {
+        this.error = 'Errore nella ricerca dei film';
+      } finally {
+        this.loading = false;
+      }
+    }
   }
+};
 /* Contenuto JS e Vue3 */
 </script>
+
+
+
+
+
+
+
 
 <template>
   <!-- Contenuto HTML -->
 
-   <div>
+  <div id="SearchBar">
     <MovieSearch @search-movies="fetchMovies" />
-   </div>
+    <div v-if="loading">Caricamento...</div>
+    <div v-if="error">{{ error }}</div>
+    <MovieList :movies="movies" />
+  </div>
+
 </template>
+
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 /* Contenuto CSS o SCSS */
+#SearchBar{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>
-
-
-
-
 
 
 
