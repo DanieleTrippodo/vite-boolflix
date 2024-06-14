@@ -1,11 +1,20 @@
 <script setup>
-import /* Nome Componente */ from './components/PERCORSSO-COMPONENTE'
+import MovieSearch from './components/MovieSearch.vue'
 
+export default {
+  name: 'App',
+  components: {
+    MovieSearch
+  }
 /* Contenuto JS e Vue3 */
 </script>
 
 <template>
   <!-- Contenuto HTML -->
+
+   <div>
+    <MovieSearch @search-movies="fetchMovies" />
+   </div>
 </template>
 
 <style scoped>
