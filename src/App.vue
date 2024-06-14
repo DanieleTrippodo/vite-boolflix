@@ -1,30 +1,31 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import /* Nome Componente */ from './components/PERCORSSO-COMPONENTE'
+
+/* Contenuto JS e Vue3 */
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <!-- Contenuto HTML -->
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+/* Contenuto CSS o SCSS */
 </style>
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Database che dobbiamo utilizzare 'TheMovieDB' -->
+<!-- ----------------------------------------------------------------------- -->
+<!-- ? Chiave API:         4ec0ba7c0ea82de7085d2c129e2c544d        -->
+<!-- ? API Read Acess Token:    eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZWMwYmE3YzBlYTgyZGU3MDg1ZDJjMTI5ZTJjNTQ0ZCIsInN1YiI6IjY2NmMyOTBjZDVmODljYjE4NzcwZTBhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lg6q_Yfn43dzUo6jXMwgBykCAcC_aEA6ja0a3Hz4S98                 -->
+<!-- ----------------------------------------------------------------------- -->
+<!-- todo - Documentazione qui ===>      https://developer.themoviedb.org/reference/intro/getting-started        --> 
+<!-- ! IMPORTANTE: quello che ti serve della documentazione lo trovi sulla sezione a destra 'SEARCH' e poi nella sottocategoria 'Movie' -->
