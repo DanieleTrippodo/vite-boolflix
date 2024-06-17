@@ -1,5 +1,7 @@
 <!-- Qui va la logica del componente (Vue3 + Javascript) -->
 <script>
+import FilmCard from './FilmCard.vue';
+
 export default {
   name: 'MovieList',
   props: {
@@ -7,6 +9,9 @@ export default {
       type: Array,
       required: true
     }
+  },
+  components: {
+    FilmCard
   }
 };
 </script>
@@ -15,12 +20,15 @@ export default {
 
 <!-- Qui va il contenuto di questo elemento (HTML) -->
 <template>
-  <div>
+  <div class="movie-list">
     <ul v-if="movies.length">
-      <li v-for="movie in movies" :key="movie.id">
-        {{ movie.title }}
+      <li v-for="movie in movies" :key="movie.id" class="movie-item">
+        <FilmCard :movie="movie" />
       </li>
     </ul>
+    <div v-else>
+      Nessun film trovato.
+    </div>
   </div>
 </template>
 
@@ -28,7 +36,11 @@ export default {
 
 <!-- Qui va lo stile CSS di questo elemento (CSS) -->
 <style scoped>
-button {
-  font-weight: bold;
+.movie-list {
+  margin: 20px;
+}
+
+.movie-item {
+  margin-bottom: 10px;
 }
 </style>

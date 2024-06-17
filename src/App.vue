@@ -23,7 +23,7 @@ export default {
       try {
         const response = await axios.get('/search/movie', {
           params: {
-            api_key: '4ec0ba7c0ea82de7085d2c129e2c544d', // la mia API Key
+            api_key: '4ec0ba7c0ea82de7085d2c129e2c544d', // todo - qui dobbiamo sostiturire con la costra API Key
             query,
             language: 'it-IT'
           }
@@ -50,10 +50,10 @@ export default {
 <template>
   <!-- Contenuto HTML -->
 
-  <div id="SearchBar">
+  <div class="app">
     <MovieSearch @search-movies="fetchMovies" />
-    <div v-if="loading">Caricamento...</div>
-    <div v-if="error">{{ error }}</div>
+    <div v-if="loading" class="loading">Caricamento...</div>
+    <div v-if="error" class="error">{{ error }}</div>
     <MovieList :movies="movies" />
   </div>
 
@@ -71,10 +71,29 @@ export default {
 
 <style scoped>
 /* Contenuto CSS o SCSS */
-#SearchBar{
+
+
+
+/* #SearchBar{
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;       Non serve più per adesso...
+  align-items: center;
+} */
+
+.app {
+  text-align: center;
+}
+
+.loading {
+  margin: 20px;
+  font-size: 18px;
+  color: blue;
+}
+
+.error {
+  margin: 20px;
+  font-size: 18px;
+  color: red;
 }
 </style>
 
