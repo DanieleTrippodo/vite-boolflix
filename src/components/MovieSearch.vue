@@ -19,14 +19,25 @@ export default {
 
 
 <template>
-  <div>
+  <div class="flex">
     <input v-model="query" @keyup.enter="searchMovie" placeholder="Quale film stai cercando?.."/>
+    <button @click="searchMovie">   <img src="../assets/img/search-icon-2048x2048-cmujl7en.png" alt="Bottone-Cerca">   </button>
   </div>
 </template>
 
 
 <style scoped>
+
+.flex{
+  display: flex;
+}
+
 input{
-  margin: 1rem;
+  padding: .5rem;
+}
+
+img{
+  width: 1.5rem;
+  padding: .2rem;
 }
 </style>
