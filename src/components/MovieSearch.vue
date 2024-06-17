@@ -1,64 +1,32 @@
-<!-- Qui va la logica del componente (Vue3 + Javascript) -->
 <script>
+import axios from 'axios';
+
 export default {
-  name: 'MovieSearch',
   data() {
     return {
-      query: ''
+      query: '',
     };
   },
   methods: {
-    search() {
-      this.$emit('search-movies', this.query);
-    }
-  }
+    async searchMovie() {
+      const apiKey = '4ec0ba7c0ea82de7085d2c129e2c544d';
+      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.query}`);
+      this.$emit('results', response.data.results);
+    },
+  },
 };
 </script>
 
 
-
-<!-- Qui va il contenuto di questo elemento (HTML) -->
 <template>
-  <div class="search-bar">
-    <input v-model="query" @keyup.enter="search" placeholder="Cerca un film..." />
-
-    <!-- Bottone per avviare la ricerca -->
-    <button @click="search">
-      <img src="../assets/img/search-icon-2048x2048-cmujl7en.png" alt="Search" class="icon">
-    </button>
+  <div>
+    <input v-model="query" @keyup.enter="searchMovie" placeholder="Quale film stai cercando?.."/>
   </div>
 </template>
 
 
-
-<!-- Qui va lo stile CSS di questo elemento (CSS) -->
 <style scoped>
-button {
-  font-weight: bold;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  padding: .5rem;
-}
-
 input{
-  padding: .5rem;
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
-  border-right-style: none;
-  font-size: 16px;
-  width: 16rem;
-  border-color: black;
-}
-
-.search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-.icon{
-  width: 1rem;
-  margin-left: .2rem;
-  margin-right: .4rem;
+  margin: 1rem;
 }
 </style>

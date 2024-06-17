@@ -1,103 +1,26 @@
+<template>
+  <div id="app">
+    <MovieList />
+  </div>
+</template>
+
 <script>
-import axios from './axios';
-import MovieSearch from './components/MovieSearch.vue';
 import MovieList from './components/MovieList.vue';
 
 export default {
-  name: 'App',
-  components: {
-    MovieSearch,
-    MovieList
-  },
-  data() {
-    return {
-      movies: [],
-      loading: false,
-      error: null
-    };
-  },
-  methods: {
-    async fetchMovies(query) {
-      this.loading = true;
-      this.error = null;
-      try {
-        const response = await axios.get('/search/movie', {
-          params: {
-            api_key: '4ec0ba7c0ea82de7085d2c129e2c544d', // todo - qui dobbiamo sostiturire con la costra API Key
-            query,
-            language: 'it-IT'
-          }
-        });
-        this.movies = response.data.results;
-      } catch (error) {
-        this.error = 'Errore nella ricerca dei film';
-      } finally {
-        this.loading = false;
-      }
-    }
-  }
+  components: { MovieList },
 };
-/* Contenuto JS e Vue3 */
 </script>
 
 
 
 
 
-
-
-
-<template>
-  <!-- Contenuto HTML -->
-
-  <div class="app">
-    <MovieSearch @search-movies="fetchMovies" />
-    <div v-if="loading" class="loading">Caricamento...</div>
-    <div v-if="error" class="error">{{ error }}</div>
-    <MovieList :movies="movies" />
-  </div>
-
-</template>
-
-
-
-
-
-
-
-
-
-
-
 <style scoped>
-/* Contenuto CSS o SCSS */
 
 
 
-/* #SearchBar{
-  display: flex;
-  flex-direction: column;       Non serve più per adesso...
-  align-items: center;
-} */
-
-.app {
-  text-align: center;
-}
-
-.loading {
-  margin: 20px;
-  font-size: 18px;
-  color: blue;
-}
-
-.error {
-  margin: 20px;
-  font-size: 18px;
-  color: red;
-}
 </style>
-
-
 
 
 
