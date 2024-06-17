@@ -9,9 +9,13 @@ export default {
   },
   methods: {
     async searchMovie() {
-      const apiKey = '4ec0ba7c0ea82de7085d2c129e2c544d';
+      const apiKey = '4ec0ba7c0ea82de7085d2c129e2c544d'; // la mia API di TheMovieDB
       const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${this.query}`);
-      this.$emit('results', response.data.results);
+      const movieDetails = await Promise.all(response.data.results.map(async (movie) => {
+        const details = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiKey}`);
+        return details.data;
+      }));
+      this.$emit('results', movieDetails);
     },
   },
 };
