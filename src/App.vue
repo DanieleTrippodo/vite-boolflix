@@ -1,9 +1,3 @@
-<template>
-  <div id="app">
-    <MovieList />
-  </div>
-</template>
-
 <script>
 import MovieList from './components/MovieList.vue';
 
@@ -13,7 +7,11 @@ export default {
 </script>
 
 
-
+<template>
+  <div id="app">
+    <MovieList />
+  </div>
+</template>
 
 
 <style scoped>

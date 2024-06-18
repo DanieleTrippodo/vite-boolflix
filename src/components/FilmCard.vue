@@ -15,10 +15,13 @@ export default {
 
 <template>
   <div class="film-card">
-    <img :src="getImageUrl(movie.poster_path, 'w342')" alt="Movie Poster"/> 
-    <h3 class="title-movie">{{ movie.title }}</h3>
-    <div class="flags flex">
-      <img v-for="country in movie.production_countries" :key="country.iso_3166_1" :src="`https://flagcdn.com/w40/${country.iso_3166_1.toLowerCase()}.png`" :alt="country.name" />
+    <div class="film-card-inner">
+      <img :src="getImageUrl(movie.poster_path, 'w342')" alt="Movie Poster"/>
+      <div class="film-info">
+        <h3 class="Movie-title">{{ movie.title }}</h3>
+        <h4>{{ movie.original_title }}</h4>
+        <p><strong>Voto:</strong> {{ movie.vote_average }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -26,35 +29,50 @@ export default {
 
 <style scoped>
 .film-card {
+  position: relative;
   display: inline-block;
-  margin: 1rem;
-  padding: 1rem;
-  border: 1px solid #00fff2;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
-  color: rgb(211, 246, 255);
+  width: 200px;
+  overflow: hidden;
 }
 
-.title-movie{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 24rem;
+.film-card-inner {
+  position: relative;
 }
 
-.flags{
-  width: 1rem;
-  margin-top: .7rem;
+.film-card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.flex{
-  display: flex;
-  gap: .6rem;
+.film-card:hover img {
+  transform: scale(1.1);
+  filter: blur(2px) brightness(70%);
 }
 
-.MoviePoster{
-  width: 10rem;
+.film-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 0px 0px 10px #30a5a5;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  text-align: center;
+  width: 12rem;
 }
 
+.film-card:hover .film-info {
+  opacity: 1;
+}
+
+.Movie-title{
+  margin-bottom: 1rem;
+}
 </style>
