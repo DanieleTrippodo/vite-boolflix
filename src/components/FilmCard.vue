@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 10rem;
+  width: 24rem;
 }
 
 .flags{
