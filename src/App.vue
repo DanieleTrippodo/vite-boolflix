@@ -9,15 +9,56 @@ export default {
 
 <template>
   <div id="app">
-    <MovieList />
+
+
+    <!-- -Header -- -->
+    <header class="flex">
+
+      <div class="marginSmall">
+        <img src="./assets/img/BoolFix-18-06-2024.png" alt="Mainlogo" id="logo">
+      </div>
+
+      <div class="marginSmall"> <MovieList /> </div>
+
+    </header>
+    <!-- -Header -- -->
+
+
+
   </div>
 </template>
 
 
 <style scoped>
 
+header{
+  background-color: #30a5a5;
+  width: 99.9%;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+
+  border-bottom: 1px solid green;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
 
 
+#logo{
+  width: 10rem;
+}
+
+
+.marginSmall{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 </style>
 
 

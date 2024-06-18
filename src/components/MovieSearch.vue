@@ -38,10 +38,29 @@ export default {
 
 input{
   padding: .5rem;
+
+  border-radius: .8rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+
+  background-color: rgb(63, 62, 62);
+  color: white;
 }
 
 img{
   width: 1.5rem;
   padding: .2rem;
+}
+
+button{
+  border-radius: .8rem;
+border: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  padding: .2rem;
+
+  background-color: rgb(21, 235, 181);
 }
 </style>
